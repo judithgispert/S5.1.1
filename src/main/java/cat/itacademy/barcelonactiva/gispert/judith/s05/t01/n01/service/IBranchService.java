@@ -1,16 +1,16 @@
 package cat.itacademy.barcelonactiva.gispert.judith.s05.t01.n01.service;
 
-import cat.itacademy.barcelonactiva.gispert.judith.s05.t01.n01.domain.Branch;
+import cat.itacademy.barcelonactiva.gispert.judith.s05.t01.n01.dto.BranchDTO;
 
 import java.util.List;
 
 
 public interface IBranchService {
-    public void createBranch(Branch branch);
-    public Branch getBranchById(int id);
-    public List<Branch> getBranches();
-    public Branch updateBranch(Branch newBranch);
-    public void deleteBranch(int id);
+    public void createBranchOffice(BranchDTO branchdto);
+    public BranchDTO getBranchOfficeById(int id);
+    public List<BranchDTO> getBranchOffices();
+    public BranchDTO updateBranchOffice(BranchDTO newBranchdto, int id);
+    public void deleteBranchOffice(int id);
 
 
 }
