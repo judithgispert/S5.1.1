@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BranchDTO {
+    @Column(name = "id", nullable = false)
+    private int pk_BranchId;
     @Column(name = "type", nullable = false, length = 50)
     private String type;
     @Column(name = "name", nullable = false, length = 50)
@@ -18,16 +20,21 @@ public class BranchDTO {
             "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy",
             "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal", "Romania", "Slovakia",
             "Slovenia", "Spain", "Sweden"));
+    public BranchDTO(){}
     public BranchDTO(String name, String country) {
         this.name = name;
         this.country = country;
         type = searchType();
     }
 
+    public int getId(){return pk_BranchId;}
     public String getType(){return type;}
     public String getName(){return name;}
     public String getCountry(){return country;}
     public List<String> getCountriesUE(){return countriesUE;}
+    public void setId(int id){
+        this.pk_BranchId = id;
+    }
     public void setType(String type){
         this.type = type;
     }
