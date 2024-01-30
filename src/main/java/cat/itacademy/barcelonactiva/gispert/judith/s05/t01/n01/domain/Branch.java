@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "branch")
 public class Branch {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int pk_BranchId;
 
     @Column(name = "name", nullable = false, length = 50)
@@ -14,6 +14,7 @@ public class Branch {
     @Column(name = "country", nullable = false, length = 50)
     private String country;
 
+    public Branch(){}
     public Branch(String name, String country){
         this.name = name;
         this.country = country;
@@ -22,6 +23,9 @@ public class Branch {
     public int getPk_BranchId(){return pk_BranchId;}
     public String getName(){return name;}
     public String getCountry(){return country;}
+    public void setId(int id){
+        this.pk_BranchId = id;
+    }
     public void setName(String name){
         this.name = name;
     }
