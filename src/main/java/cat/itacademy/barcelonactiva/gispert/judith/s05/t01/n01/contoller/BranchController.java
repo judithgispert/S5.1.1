@@ -24,26 +24,26 @@ public class BranchController {
     }
     @GetMapping("/createBranch")
     public String createBranch(Model model){
-        BranchDTO branchDto = new BranchDTO();
-        model.addAttribute("branchDto", branchDto);
+        BranchDTO branchDTO = new BranchDTO();
+        model.addAttribute("branchDTO", branchDTO);
         return "createBranch";
     }
     @PostMapping("/addBranch")
-    public String showSavedBranch(@ModelAttribute("branchDto") BranchDTO branchDto){
-        branchService.createBranchOffice(branchDto);
+    public String showSavedBranch(@ModelAttribute("branchDto") BranchDTO branchDTO){
+        branchService.createBranchOffice(branchDTO);
         return "redirect:/api/branchOffice/";
     }
-    @GetMapping("/updateBranch/{id}")
-    public String updateBranch(@PathVariable int id, Model model){
-        model.addAttribute("branchDto", branchService.getBranchOfficeById(id));
+    @GetMapping("/showUpdateBranch/{id}")
+    public String showUpdateBranch(@PathVariable int id, Model model){
+        model.addAttribute("branchDTO", branchService.getBranchOfficeById(id));
         return "updateBranch";
     }
-    @PostMapping("/branch/{id}")
-    public String showUpdatedBranch(@PathVariable int id, @ModelAttribute("branchDto") BranchDTO branchDto){
-        branchService.updateBranchOffice(branchDto, id);
+    @PostMapping("/updateBranch/{id}")
+    public String updatedBranch(@PathVariable int id, @ModelAttribute("branchDTO") BranchDTO branchDTO){
+        branchService.updateBranchOffice(branchDTO, id);
         return "redirect:/api/branchOffice/";
     }
-    @GetMapping("/branch/{id}")
+    @GetMapping("/deleteBranch/{id}")
     public String deleteBranch(@PathVariable int id){
         branchService.deleteBranchOffice(id);
         return "redirect:/api/branchOffice/";
