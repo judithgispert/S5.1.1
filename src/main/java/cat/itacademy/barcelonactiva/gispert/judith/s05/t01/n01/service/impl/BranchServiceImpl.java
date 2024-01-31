@@ -19,8 +19,8 @@ public class BranchServiceImpl implements IBranchService {
 
 
     @Override
-    public void createBranchOffice(BranchDTO branchDto) {
-        Branch branch = branchDTOBranchOffice(branchDto);
+    public void createBranchOffice(BranchDTO branchDTO) {
+        Branch branch = branchDTOBranchOffice(branchDTO);
         branchRepository.save(branch);
     }
 
@@ -45,8 +45,8 @@ public class BranchServiceImpl implements IBranchService {
     }
 
     @Override
-    public BranchDTO updateBranchOffice(BranchDTO branchDto, int id) {
-        Branch newBranch = branchDTOBranchOffice(branchDto);
+    public BranchDTO updateBranchOffice(BranchDTO branchDTO, int id) {
+        Branch newBranch = branchDTOBranchOffice(branchDTO);
         Optional<Branch> branch = branchRepository.findById(id);
         if(branch.isPresent()){
             Branch updatedBranch = branch.get();
@@ -72,14 +72,14 @@ public class BranchServiceImpl implements IBranchService {
 
     private static Branch branchDTOBranchOffice(BranchDTO branchDto){
         Branch branch = new Branch();
-        branch.setId(branchDto.getId());
+        branch.setId(branchDto.getPk_BranchI());
         branch.setName(branchDto.getName());
         branch.setCountry(branchDto.getCountry());
         return branch;
     }
     private static BranchDTO branchOfficeBranchDTO(Branch branch){
         BranchDTO branchDto = new BranchDTO();
-        branchDto.setId(branch.getPk_BranchId());
+        branchDto.setPk_BranchI(branch.getPk_BranchId());
         branchDto.setName(branch.getName());
         branchDto.setCountry(branch.getCountry());
         branchDto.setType(branchDto.searchType());
