@@ -72,7 +72,7 @@ public class BranchServiceImpl implements IBranchService {
 
     private static Branch branchDTOBranchOffice(BranchDTO branchDto){
         Branch branch = new Branch();
-        branch.setId(branchDto.getPk_BranchI());
+        branch.setId(branchDto.getPk_BranchId());
         branch.setName(branchDto.getName());
         branch.setCountry(branchDto.getCountry());
         return branch;
