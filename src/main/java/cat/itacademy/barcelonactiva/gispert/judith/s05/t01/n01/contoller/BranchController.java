@@ -16,6 +16,10 @@ public class BranchController {
     @Autowired
     private BranchServiceImpl branchService;
 
+    @GetMapping()
+    public String startWeb(){
+        return "startWeb";
+    }
     @GetMapping("/")
     public String listAllView(Model model){
         List<BranchDTO> branchDTOList = branchService.getBranchOffices();
@@ -34,20 +38,24 @@ public class BranchController {
         return "redirect:/api/branchOffice/";
     }
     @GetMapping("/showUpdateBranch/{id}")
-    public String showUpdateBranch(@PathVariable int id, Model model){
+    public String showUpdateBranch(@PathVariable(value="id") int id, Model model){
         model.addAttribute("branchDTO", branchService.getBranchOfficeById(id));
         return "updateBranch";
     }
     @PostMapping("/updateBranch/{id}")
-    public String updatedBranch(@PathVariable int id, @ModelAttribute("branchDTO") BranchDTO branchDTO){
+    public String updatedBranch(@PathVariable(value="id") int id, @ModelAttribute("branchDTO") BranchDTO branchDTO){
         branchService.updateBranchOffice(branchDTO, id);
         return "redirect:/api/branchOffice/";
     }
     @GetMapping("/deleteBranch/{id}")
-    public String deleteBranch(@PathVariable int id){
+    public String deleteBranch(@PathVariable(value="id")int id){
         branchService.deleteBranchOffice(id);
         return "redirect:/api/branchOffice/";
     }
 
-
+    @GetMapping("/getOne/{id}")
+    public String getOneBranchOffice(@PathVariable(value="id") int id, Model model){
+        model.addAttribute("branchDTO", branchService.getBranchOfficeById(id));
+        return "getOne";
+    }
 }
