@@ -52,10 +52,4 @@ public class BranchController {
         branchService.deleteBranchOffice(id);
         return "redirect:/api/branchOffice/";
     }
-
-    @GetMapping("/getOne/{id}")
-    public String getOneBranchOffice(@PathVariable(value="id") int id, Model model){
-        model.addAttribute("branchDTO", branchService.getBranchOfficeById(id));
-        return "getOne";
-    }
 }
