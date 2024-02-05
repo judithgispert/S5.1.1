@@ -26,6 +26,11 @@ public class BranchController {
         model.addAttribute("branchDTOList", branchDTOList);
         return "listView";
     }
+    @GetMapping("/getOneBranchOffice/{id}")
+    public String viewOne(@PathVariable(value="id") int id, Model model){
+        model.addAttribute("branchDTO", branchService.getBranchOfficeById(id));
+        return "getOne";
+    }
     @GetMapping("/createBranch")
     public String createBranch(Model model){
         BranchDTO branchDTO = new BranchDTO();

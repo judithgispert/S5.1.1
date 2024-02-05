@@ -30,7 +30,7 @@
     <br>
     <div class="container">
         <div class="row">
-            <h2>BRANCH OFFICE LIST</h2>
+            <h2>BRANCH OFFICE</h2>
         </div>
         <br>
         <table class="table table-striped table-bordered">
@@ -44,21 +44,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="branchOffice : ${branchDTOList}">
-                    <td th:text="${branchOffice.pk_BranchId}">
-                    <td th:text="${branchOffice.name}">
-                    <td th:text="${branchOffice.country}">
-                    <td th:text="${branchOffice.type}">
+                    <td th:text="${branchDTO.pk_BranchId}">
+                    <td th:text="${branchDTO.name}">
+                    <td th:text="${branchDTO.country}">
+                    <td th:text="${branchDTO.type}">
                     <td>
-                    <a class="btn btn-outline-info" th:href="@{/api/branchOffice/getOneBranchOffice/{id}(id=${branchOffice.pk_BranchId})}">Info</a>
-                    <a class="btn btn-outline-secondary" th:href="@{/api/branchOffice/showUpdateBranch/{id}(id=${branchOffice.pk_BranchId})}">Update</a>
-                    <a class="btn btn-outline-danger" th:href="@{/api/branchOffice/deleteBranch/{id}(id=${branchOffice.pk_BranchId})}">Delete</a>
+                    <a class="btn btn-outline-secondary" th:href="@{/api/branchOffice/showUpdateBranch/{id}(id=${branchDTO.pk_BranchId})}">Update</a>
+                    <a class="btn btn-outline-danger" th:href="@{/api/branchOffice/deleteBranch/{id}(id=${branchDTO.pk_BranchId})}">Delete</a>
                 </td>
-                </tr>
             </tbody>
         </table>
-        <br>
-        <a class="btn btn-success" th:href="@{/api/branchOffice/createBranch}">Add branch office</a>
     </div>
 </body>
 </html>
